@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var image: UIImage?
     @State private var imageIDs: [Int] = []
     
+    @AppStorage("imageURL") var imageURL: String?
+    
     // the largest possible size of a large widget is 379 x 379 (on 12.9 inch iPad)
     // according to https://github.com/simonbs/ios-widget-sizes
     // TODO: if on iPhone, only fetch the largest possible value for an iPhone's large widget size to save network traffic
@@ -25,6 +27,10 @@ struct ContentView: View {
         VStack {
             if let image {
                 VStack {
+
+                    Text(imageURL ?? "")
+                        .font(.subheadline)
+
                     Image(uiImage: image)
                         .frame(maxWidth: pictureSize.width, maxHeight: pictureSize.height)
                         .onTapGesture(perform: loadRandomImage)
@@ -36,7 +42,15 @@ struct ContentView: View {
             }
             else {
                 ProgressView()
-                    .onAppear(perform: loadRandomImage)
+                    .task {
+                        if let imageURL,
+                           let urlFromPreviousLoad = URL(string: imageURL) {
+                            await load(imageURL: urlFromPreviousLoad)
+                        }
+                        else {
+                            loadRandomImage()
+                        }
+                    }
             }
         }
         .padding()
