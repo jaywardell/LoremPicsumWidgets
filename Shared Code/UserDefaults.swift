@@ -9,6 +9,10 @@ import Foundation
 
 @MainActor
 extension UserDefaults {
+    static let usingAppGroup = UserDefaults(suiteName: .appGroupName)
+}
+
+extension String {
     static var appGroupName: String { "group.lorempicsumwidgets" }
-    static let usingAppGroup = UserDefaults(suiteName: appGroupName)
+    static var imagesCacheName: String { "images" }
 }
