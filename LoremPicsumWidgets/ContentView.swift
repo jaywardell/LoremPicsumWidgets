@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State private var image: UIImage?
     
-    @AppStorage("imageURL") var imageURL: String?
+    @AppStorage("imageURL", store: UserDefaults.usingApPGroup) var imageURL: String?
     
     // the largest possible size of a large widget is 379 x 379 (on 12.9 inch iPad)
     // according to https://github.com/simonbs/ios-widget-sizes

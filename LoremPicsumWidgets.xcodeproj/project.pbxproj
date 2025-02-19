@@ -53,6 +53,13 @@
 			);
 			target = 7C18CE0F2D659490006017F2 /* LoremPicsumImageWidgetExtension */;
 		};
+		7C18CE282D6596C2006017F2 /* Exceptions for "Shared Code" folder in "LoremPicsumWidgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				UserDefaults.swift,
+			);
+			target = 7C18CDCF2D656404006017F2 /* LoremPicsumWidgets */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -67,6 +74,14 @@
 				7C18CE1E2D659493006017F2 /* Exceptions for "LoremPicsumImageWidget" folder in "LoremPicsumImageWidgetExtension" target */,
 			);
 			path = LoremPicsumImageWidget;
+			sourceTree = "<group>";
+		};
+		7C18CE242D6596B7006017F2 /* Shared Code */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				7C18CE282D6596C2006017F2 /* Exceptions for "Shared Code" folder in "LoremPicsumWidgets" target */,
+			);
+			path = "Shared Code";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -94,6 +109,7 @@
 		7C18CDC72D656403006017F2 = {
 			isa = PBXGroup;
 			children = (
+				7C18CE242D6596B7006017F2 /* Shared Code */,
 				7C18CE232D659656006017F2 /* LoremPicsumImageWidgetExtension.entitlements */,
 				7C18CE012D656470006017F2 /* README.md */,
 				7C18CDD22D656404006017F2 /* LoremPicsumWidgets */,
@@ -162,6 +178,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				7C18CE132D659490006017F2 /* LoremPicsumImageWidget */,
+				7C18CE242D6596B7006017F2 /* Shared Code */,
 			);
 			name = LoremPicsumImageWidgetExtension;
 			packageProductDependencies = (
