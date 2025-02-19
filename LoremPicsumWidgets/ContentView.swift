@@ -53,16 +53,24 @@ struct ContentView: View {
                 }
             }
             else {
-                ProgressView()
-                    .task {
-                        if let imageURL,
-                           let urlFromPreviousLoad = URL(string: imageURL) {
-                            await load(imageURL: urlFromPreviousLoad)
+                VStack {
+                    ProgressView()
+                        .task {
+                            if let imageURL,
+                               let urlFromPreviousLoad = URL(string: imageURL) {
+                                await load(imageURL: urlFromPreviousLoad)
+                            }
+                            else {
+                                loadRandomImage()
+                            }
                         }
-                        else {
-                            loadRandomImage()
-                        }
-                    }
+                        .controlSize(.extraLarge)
+                    
+                    Text("picsum.photos will throttle if you hit it many times in succession")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .padding(.top)
+                }
             }
         }
         .padding()
