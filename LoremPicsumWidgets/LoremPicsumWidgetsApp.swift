@@ -12,6 +12,7 @@ struct LoremPicsumWidgetsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(SharedData())
         }
     }
 }

@@ -15,6 +15,8 @@ struct ContentView: View {
     
     @AppStorage("imageURL", store: UserDefaults.usingAppGroup) var imageURL: String?
     
+    @Environment(SharedData.self) var sharedData
+    
     // the largest possible size of a large widget is 379 x 379 (on 12.9 inch iPad)
     // according to https://github.com/simonbs/ios-widget-sizes
     // TODO: if on iPhone, only fetch the largest possible value for an iPhone's large widget size to save network traffic
@@ -92,6 +94,7 @@ struct ContentView: View {
             let (data, _) = try await URLSession.shared.data(from: imageURL)
             await MainActor.run {
                 image = UIImage(data: data)
+                sharedData.cache.insert(data, for: imageURL)
             }
             return true
         }

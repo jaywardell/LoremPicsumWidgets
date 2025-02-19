@@ -47,11 +47,17 @@ struct LoremPicsumImageWidgetEntryView : View {
     var entry: Provider.Entry
 
     @AppStorage("imageURL", store: UserDefaults.usingAppGroup) var imageURL: String?
+    @Environment(SharedData.self) var sharedData
 
     var body: some View {
-        VStack {
-            
-            Text(imageURL ?? "no image URL yet")
+        if let imageURL,
+           let url = URL(string: imageURL),
+           let imageData = sharedData.cache[url],
+           let image = UIImage(data: imageData) {
+            Image(uiImage: image)
+        }
+        else {
+            Text("No Image Yet")
         }
     }
 }
@@ -63,9 +69,11 @@ struct LoremPicsumImageWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
                 LoremPicsumImageWidgetEntryView(entry: entry)
+                    .environment(SharedData())
                     .containerBackground(.fill.tertiary, for: .widget)
             } else {
                 LoremPicsumImageWidgetEntryView(entry: entry)
+                    .environment(SharedData())
                     .padding()
                     .background()
             }
