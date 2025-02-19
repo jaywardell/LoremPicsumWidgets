@@ -69,12 +69,12 @@ struct ContentView: View {
                 height: Int(pictureSize.height)
             ).url
             
+            guard await load(imageURL: pictureURL) else { return }
+
             await MainActor.run {
                 self.imageURL = pictureURL.absoluteString
             }
-  
-            await load(imageURL: pictureURL)
-            
+
             WidgetCenter.shared.getCurrentConfigurations { result in
                 guard case .success(let widgets) = result else { return }
 
@@ -85,15 +85,17 @@ struct ContentView: View {
         }
     }
     
-    private func load(imageURL: URL) async {
+    private func load(imageURL: URL) async -> Bool {
         do {
             let (data, _) = try await URLSession.shared.data(from: imageURL)
             await MainActor.run {
                 image = UIImage(data: data)
             }
+            return true
         }
         catch {
             print("Error loading image from \(imageURL): \((error as? LocalizedError)?.localizedDescription ?? "unknkown error")")
+            return false
         }
     }
 }
