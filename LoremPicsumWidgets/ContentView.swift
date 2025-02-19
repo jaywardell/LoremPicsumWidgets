@@ -75,15 +75,23 @@ struct ContentView: View {
                 height: Int(pictureSize.height)
             ).url
             
-            do {
-                let (data, _) = try await URLSession.shared.data(from: pictureURL)
-                await MainActor.run {
-                    image = UIImage(data: data)
-                }
+            await MainActor.run {
+                self.imageURL = pictureURL.absoluteString
             }
-            catch {
-                print("Error loading image from \(pictureURL): \((error as? LocalizedError)?.localizedDescription ?? "unknkown error")")
+  
+            await load(imageURL: pictureURL)
+        }
+    }
+    
+    private func load(imageURL: URL) async {
+        do {
+            let (data, _) = try await URLSession.shared.data(from: imageURL)
+            await MainActor.run {
+                image = UIImage(data: data)
             }
+        }
+        catch {
+            print("Error loading image from \(imageURL): \((error as? LocalizedError)?.localizedDescription ?? "unknkown error")")
         }
     }
 }
