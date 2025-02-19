@@ -46,13 +46,12 @@ struct SimpleEntry: TimelineEntry {
 struct LoremPicsumImageWidgetEntryView : View {
     var entry: Provider.Entry
 
+    @AppStorage("imageURL", store: UserDefaults.usingApPGroup) var imageURL: String?
+
     var body: some View {
         VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
+            
+            Text(imageURL ?? "no image URL yet")
         }
     }
 }
