@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     
@@ -73,6 +74,14 @@ struct ContentView: View {
             }
   
             await load(imageURL: pictureURL)
+            
+            WidgetCenter.shared.getCurrentConfigurations { result in
+                guard case .success(let widgets) = result else { return }
+
+                for widget in widgets {
+                    WidgetCenter.shared.reloadTimelines(ofKind: widget.kind)
+                }
+            }
         }
     }
     
