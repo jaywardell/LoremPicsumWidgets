@@ -31,6 +31,13 @@ struct ContentView: View {
             if let image {
                 VStack {
 
+                    Text("Images from [picsum.photos](http://picsum.photos)")
+                        .font(.largeTitle)
+                        .padding(.top)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    Spacer()
+                    
                     Text(imageURL ?? "")
                         .font(.subheadline)
 
@@ -41,6 +48,8 @@ struct ContentView: View {
                     Text("Tap the image to load another one")
                         .font(.footnote)
                         .foregroundStyle(.secondary)
+                    
+                    Spacer()
                 }
             }
             else {
