@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var image: UIImage?
-    @State private var imageIDs: [Int] = []
     
     @AppStorage("imageURL") var imageURL: String?
     
@@ -61,28 +60,8 @@ struct ContentView: View {
         // as a shortcut, just grab imageIDs here
         Task.detached {
             
-            // load a list of possible image ids from the server
-            if await self.imageIDs.isEmpty {
-                // choose one set of 100 images from the first 500 provided by the server
-                let page = Int.random(in: 1 ... 5)
-                let imageIDsURL = LoremPicsum.list(page: page, picturesPerPage: 100)
-                do {
-                    let (data, _) = try await URLSession.shared.data(from: imageIDsURL)
-                    struct ResponseObject: Decodable { let id: String }
-                    let ids = try JSONDecoder().decode([ResponseObject].self, from: data)
-                    await MainActor.run {
-                        self.imageIDs = ids.map(\.id).compactMap(Int.init)
-                    }
-                }
-                catch {
-                    print("Error retrieving list of image ids from \(imageIDsURL): \(error.localizedDescription)")
-                    return
-                }
-            }
-            
-            
             // choose a random image id and request it from the server
-            guard let imageID = await self.imageIDs.randomElement() else { return }
+            let imageID = Int.random(in: 1 ... 999)
             let pictureURL = LoremPicsum.picture(
                 id: imageID,
                 width: Int(pictureSize.width),
