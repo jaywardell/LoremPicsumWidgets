@@ -11,7 +11,7 @@ import CacheCow
 
 struct ContentView: View {
     
-    @State private var image: UIImage?
+    @State private var result: Result<UIImage, Error>?
     
     @AppStorage("imageURL", store: UserDefaults.usingAppGroup) var imageURL: String?
     
@@ -28,9 +28,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            if let image {
+            
+            switch result {
+                
+            case .success(let image):
                 VStack {
-
+                    
                     Text("Images from [picsum.photos](http://picsum.photos)")
                         .font(.largeTitle)
                         .padding(.top)
@@ -40,7 +43,7 @@ struct ContentView: View {
                     
                     Text(imageURL ?? "")
                         .font(.subheadline)
-
+                    
                     Image(uiImage: image)
                         .frame(maxWidth: pictureSize.width, maxHeight: pictureSize.height)
                         .onTapGesture(perform: loadRandomImage)
@@ -51,8 +54,16 @@ struct ContentView: View {
                     
                     Spacer()
                 }
-            }
-            else {
+                
+            case .failure(let error):
+                Text("There was an error loading an image")
+                    .font(.title)
+                
+                Text(error.localizedDescription)
+                
+                Button("Try Again", action: loadRandomImage)
+
+            case .none:
                 VStack {
                     ProgressView()
                         .task {
@@ -108,15 +119,24 @@ struct ContentView: View {
     @discardableResult
     private func load(imageURL: URL) async -> Bool {
         do {
+            if let cached = sharedData.cache[imageURL],
+               let image = UIImage(data: cached) {
+                self.result = .success(image)
+                return true
+            }
+            
             let (data, _) = try await URLSession.shared.data(from: imageURL)
             await MainActor.run {
-                image = UIImage(data: data)
-                sharedData.cache.insert(data, for: imageURL)
+                if let image = UIImage(data: data) {
+                    self.result = .success(image)
+                    sharedData.cache.insert(data, for: imageURL)
+                }
             }
             return true
         }
         catch {
             print("Error loading image from \(imageURL): \((error as? LocalizedError)?.localizedDescription ?? "unknkown error")")
+            self.result = .failure(error)
             return false
         }
     }
