@@ -66,7 +66,7 @@
 		7C18CE702D667629006017F2 /* Exceptions for "readme_resources" folder in "LoremPicsumImageWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"RocketSim_Recording_iPhone_16_6.1_2025-02-19_15.26.09.mp4",
+				screenrecording.mp4,
 			);
 			target = 7C18CE0F2D659490006017F2 /* LoremPicsumImageWidgetExtension */;
 		};
