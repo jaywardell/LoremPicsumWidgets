@@ -4,6 +4,7 @@
   <source src="/readme_resources/screenrecording.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
+http://readme_resources/screenrecording.mp4
 
 
 This is an example of how to share cached network data between a host application and a widget using App Groups. 
