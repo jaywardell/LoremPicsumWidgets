@@ -49,7 +49,9 @@ struct ContentView: View {
             
             // load a list of possible image ids from the server
             if await self.imageIDs.isEmpty {
-                let imageIDsURL = LoremPicsum.list(page: 1, picturesPerPage: 100)
+                // choose one set of 100 images from the first 500 provided by the server
+                let page = Int.random(in: 1 ... 5)
+                let imageIDsURL = LoremPicsum.list(page: page, picturesPerPage: 100)
                 do {
                     let (data, _) = try await URLSession.shared.data(from: imageIDsURL)
                     struct ResponseObject: Decodable { let id: String }
