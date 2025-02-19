@@ -7,6 +7,8 @@
 
 import Foundation
 
+@MainActor
 extension UserDefaults {
-    static let usingApPGroup = UserDefaults(suiteName: "group.lorempicsumwidgets")
+    static var appGroupName: String { "group.lorempicsumwidgets" }
+    static let usingAppGroup = UserDefaults(suiteName: appGroupName)
 }

@@ -46,7 +46,7 @@ struct SimpleEntry: TimelineEntry {
 struct LoremPicsumImageWidgetEntryView : View {
     var entry: Provider.Entry
 
-    @AppStorage("imageURL", store: UserDefaults.usingApPGroup) var imageURL: String?
+    @AppStorage("imageURL", store: UserDefaults.usingAppGroup) var imageURL: String?
 
     var body: some View {
         VStack {
