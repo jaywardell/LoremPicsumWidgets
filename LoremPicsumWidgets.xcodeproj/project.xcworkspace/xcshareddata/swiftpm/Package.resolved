@@ -1,0 +1,15 @@
+{
+  "originHash" : "8f3b73591e1a8546be09957f1dbe6ee9d0432df4d92591871eb02337ad36eda5",
+  "pins" : [
+    {
+      "identity" : "cachecow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jaywardell/CacheCow",
+      "state" : {
+        "revision" : "f054834473c04e07f672d5e1252ab3f48ecfe090",
+        "version" : "0.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}
