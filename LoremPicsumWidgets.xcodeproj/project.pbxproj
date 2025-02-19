@@ -63,13 +63,6 @@
 			);
 			target = 7C18CDCF2D656404006017F2 /* LoremPicsumWidgets */;
 		};
-		7C18CE702D667629006017F2 /* Exceptions for "readme_resources" folder in "LoremPicsumImageWidgetExtension" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				screenrecording.mp4,
-			);
-			target = 7C18CE0F2D659490006017F2 /* LoremPicsumImageWidgetExtension */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -92,14 +85,6 @@
 				7C18CE282D6596C2006017F2 /* Exceptions for "Shared Code" folder in "LoremPicsumWidgets" target */,
 			);
 			path = "Shared Code";
-			sourceTree = "<group>";
-		};
-		7C18CE6F2D66761E006017F2 /* readme_resources */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				7C18CE702D667629006017F2 /* Exceptions for "readme_resources" folder in "LoremPicsumImageWidgetExtension" target */,
-			);
-			path = readme_resources;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -129,7 +114,6 @@
 		7C18CDC72D656403006017F2 = {
 			isa = PBXGroup;
 			children = (
-				7C18CE6F2D66761E006017F2 /* readme_resources */,
 				7C18CE242D6596B7006017F2 /* Shared Code */,
 				7C18CE232D659656006017F2 /* LoremPicsumImageWidgetExtension.entitlements */,
 				7C18CE012D656470006017F2 /* README.md */,
@@ -201,7 +185,6 @@
 			fileSystemSynchronizedGroups = (
 				7C18CE132D659490006017F2 /* LoremPicsumImageWidget */,
 				7C18CE242D6596B7006017F2 /* Shared Code */,
-				7C18CE6F2D66761E006017F2 /* readme_resources */,
 			);
 			name = LoremPicsumImageWidgetExtension;
 			packageProductDependencies = (
