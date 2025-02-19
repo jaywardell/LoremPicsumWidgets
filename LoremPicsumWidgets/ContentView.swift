@@ -119,9 +119,8 @@ struct ContentView: View {
     @discardableResult
     private func load(imageURL: URL) async -> Bool {
         do {
-            if let cached = sharedData.cache[imageURL],
-               let image = UIImage(data: cached) {
-                self.result = .success(image)
+            if let cached = sharedData.cache[imageURL] {
+                self.result = .success(cached)
                 return true
             }
             
@@ -129,7 +128,7 @@ struct ContentView: View {
             await MainActor.run {
                 if let image = UIImage(data: data) {
                     self.result = .success(image)
-                    sharedData.cache.insert(data, for: imageURL)
+                    sharedData.cache.insert(image, for: imageURL)
                 }
             }
             return true
@@ -141,7 +140,3 @@ struct ContentView: View {
         }
     }
 }
-
-//#Preview {
-//    ContentView()
-//}

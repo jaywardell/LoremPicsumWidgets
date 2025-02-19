@@ -52,10 +52,7 @@ struct LoremPicsumImageWidgetEntryView : View {
     var body: some View {
         if let imageURL,
            let url = URL(string: imageURL),
-           // TODO: there was a fatal error here when I ran the app a few times then ran the extension from the simulator
-           // idky
-           let imageData = sharedData.cache[url],
-           let image = UIImage(data: imageData) {
+            let image = sharedData.cache[url] {
             Image(uiImage: image)
         }
         else {
