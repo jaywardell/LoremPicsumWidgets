@@ -12,6 +12,7 @@
 		7C18CE1D2D659492006017F2 /* LoremPicsumImageWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7C18CE102D659490006017F2 /* LoremPicsumImageWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		7C18CE4A2D659B29006017F2 /* CacheCow in Frameworks */ = {isa = PBXBuildFile; productRef = 7C18CE492D659B29006017F2 /* CacheCow */; };
 		7C18CE6D2D65A0E3006017F2 /* CacheCow in Frameworks */ = {isa = PBXBuildFile; productRef = 7C18CE6C2D65A0E3006017F2 /* CacheCow */; };
+		7C18CE952D667FAD006017F2 /* MIT License in Resources */ = {isa = PBXBuildFile; fileRef = 7C18CE942D667FAD006017F2 /* MIT License */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		7C18CE012D656470006017F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7C18CE102D659490006017F2 /* LoremPicsumImageWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LoremPicsumImageWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C18CE232D659656006017F2 /* LoremPicsumImageWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LoremPicsumImageWidgetExtension.entitlements; sourceTree = "<group>"; };
+		7C18CE942D667FAD006017F2 /* MIT License */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MIT License"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -121,6 +123,7 @@
 				7C18CE132D659490006017F2 /* LoremPicsumImageWidget */,
 				7C18CDE62D65641C006017F2 /* Frameworks */,
 				7C18CDD12D656404006017F2 /* Products */,
+				7C18CE942D667FAD006017F2 /* MIT License */,
 			);
 			sourceTree = "<group>";
 		};
@@ -247,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C18CE952D667FAD006017F2 /* MIT License in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
